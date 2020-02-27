@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .docbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+            select{
+                color:red;
+            }
+            option{
+                color:black;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2 id="topic">Topic</h2>
+        <p id="topicwords"></p>
+        <p id="doc_name"></p>
+        <form calss="custom-select-form">
+            <select calss="selected" size="10" id="sel1" onchange="giveSelectionTopic(this.value, this.options[this.selectedIndex].text)" style="width:450px; font-size:15px;"> 
+                
+            </select>
+            <select size="10" id="sel2" onchange="giveSelectionDoc(this.value)" style="width:300px; font-size:15px;">
+                <option disabled>Select Topic to see Doc list</option>
+            </select>
+            <select size="10" id="sel3" style="width:450px; font-size:15px;">
+                <option disabled>Select Doc to see Topic list</option>
+            </select>
+            <br><br>
+        </form>
+        <button class="docbtn" onclick="seeSelectedDoc()">See Document</button>
+        <script>    
+            var data =  {"topics":{"topic1":{"words":"direction, therefore, optical, factor, change, quality, concentration, correspond, different, thus, close, less, possible, obtain, deviation, source, additional, even, make, composition, carry, ambient, double, chemical, heat, parallel, prepare, sharp, appropriate, originate, element, monitor, generally, mode, undergo, mix, microscope, amount, laser, current, zone, stabilize, grain_boundarie, reverse, lower, define, break, repeat, si, average, incidence, crystallite, excitation, objective, wavelength, list, lens, unchanged, run, drain, higher, voltage, accumulate, spatial, macroscopic, retain, desire, accuracy, nanoscale, multilayer, room_temperature, reproduce, core_level, error, novel, overnight, elsewhere, inhomogeneous, dictate, incident, dominant, cuso, white, adjacent, reactor, effort, escape, closer, rotational_domain, quickly, bacteria, photoemission, photoelectron, resonance, argument, equipment, ahpc, nonequilibrium, assumption, tissue","name":"Topic 1", "docs":[{"name":"Doc1"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc17"},{"name":"Doc18"}]},"topic2":{"words":"foil, substrate, layer, site, fast, environmental, time, area, polycrystalline, rotate, pressure, transport, cvd, expose, exponentially, coverage, compose, set, boundary, remove, achieve, chamber, atmospheric, reference, hydrocarbon, spectroscopy, alignment, represent, directly, translation, bulk, available, employ, typically, spot, attribute, reader, leed, buffer, estimate, refer, interpretation, dimension, rapid, basis, precursor, maximum, flow, wall, almost, target, clean, constant, equivalent, thin, certain, atomically, predict, display, deposit, mbar, proportion, good, varying, dark, importantly, applied, catalytic, selective, identical, release, roll, receive, similarity, improve, deep, ch, batch, enhance, commercial, exfoliate, equip, mobility, select, carefully, integrate, observed, totally, uniformity, minute, elongate, few, check, miss, ﬁnally, pack, differential, schematically, used, favorable","name":"Topic 2", "docs":[{"name":"Doc3"},{"name":"Doc4"},{"name":"Doc9"},{"name":"Doc11"},{"name":"Doc12"},{"name":"Doc13"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc17"},{"name":"Doc19"}]},"topic3":{"words":"show, figure, result, grow, cu, lead, oxygen, anneal, reaction, ﬁlm, carbon, indicate, form, addition, major, know, effective, line, case, exposure, specie, well, respectively, component, initial, would, oxidize, point, clearly, similar, much, allow, measure, typical, red, arrow, align, ion, intensity, range, standard, group, feature, blue, underlie, cuo, value, ratio, calculate, nucleus, consistent, note, long, test, scan, examine, dot, diﬀusion, conﬁrm, leed_pattern, inhibit, color, map, agree, favor, lobe, still, ensure, vary, right, front, nearly, discussion, shift, kink, water, proﬁle, able, dissolve, amorphous, conﬁguration, position, continue, solubility, heating, ﬂake, terminate, nanoparticle, description, protective, location, assign, grown, choose, monolayer, subsequent, seed, elimination, ethylene, assume","name":"Topic 3", "docs":[{"name":"Doc2"},{"name":"Doc3"},{"name":"Doc7"},{"name":"Doc9"},{"name":"Doc10"},{"name":"Doc11"},{"name":"Doc13"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc18"},{"name":"Doc20"}]},"topic4":{"words":"edge, air, evidence, demonstrate, level, extremely, system, step, conﬁrme, island, plate, phase, distribution, interface, synthesize, cluster, microscopy, type, become, scheme, analyze, probe, application, size, ﬁrst, continuous, software, black, consist, collect, bottom, date, curve, clear, top, diffusion, dry, hole, electrochemical, eventually, key, scanning, prove, strip, bubble, completely, subsequently, armchair, normal, enable, acid, poor, terrace, perfectly, full, potential, circle, increasingly, incubate, apparent, ﬁtte, negative, latter, possibility, statically, evaluate, prior, fresh, phenomenon, field, exist, similarly, industry, issue, obviously, sodm, rinse, partially, new, relate, meanwhile, left, industrial, lorentzian, whole, preparation, entirely, sequence, tem, development, precision, sequential, passivation, binding, half, tissue, aggregate, read, challenge, threshold","name":"Topic 4", "docs":[{"name":"Doc9"},{"name":"Doc13"},{"name":"Doc16"},{"name":"Doc18"}]},"topic5":{"words":"global, sample, image, structure, include, see, oxide, signiﬁcant, diﬀerent, damage, region, stage, moire, orient, expect, individual, thickness, supplementary, transition, reveal, mainly, identify, sccm, sem, chemistry, take, afm, importance, nm, heterostructure, diffraction, actually, fermi, local, evolution, sic, information, space, equal, rather, leave, height, diﬀraction, misalign, raman, reach, representative, contrast, diﬀerence, width, quantitative, channel, adsorption, imperfection, outline, finally, termination, mapping, evolve, science, transform, unique, arise, accelerate, graphitic, responsible, inset, excellent, uniform, leem, topography, distinct, care, axis, background, distinctive, real, yellow, desorb, freeze, surround, determination, sense, physical, determined, evaporation, self, supply, come, calculated, ebsd, quartz, absent, velocity, beam, tip, guide, cubic, abrupt, wafer","name":"Topic 5", "docs":[{"name":"Doc11"},{"name":"Doc12"},{"name":"Doc13"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc17"},{"name":"Doc18"},{"name":"Doc19"}]},"topic6":{"words":"also, nucleation, suggest, occur, observe, energy, peak, analysis, find, describe, measurement, attachment, plane, center, introduce, device, support, incorporation, label, serve, propose, highly, band, state, main, give, treatment, play, previously, complete, catalyst, visible, illustrate, proceed, thick, part, ev, geometry, cool, resolve, isolate, pathway, semiconductor, nanoarpe, principle, hot, μm, impurity, nucleate, often, simultaneously, view, easily, strongly, interestingly, schematic, early, progress, probable, spectrum, equilibrium, sublimation, characterize, instance, realize, unfavorable, other, event, extend, dominate, agreement, preferentially, arpe, nature, influence, window, wide, ﬁnding, predominant, hybridize, call, valence_band, process, noticeable, useful, decompose, strategy, resonant, enough, cooling, ﬁeld, measured, free_stande, pt, precipitate, setup, processing, lie, negligible, already","name":"Topic 6", "docs":[{"name":"Doc2"},{"name":"Doc3"},{"name":"Doc4"},{"name":"Doc7"},{"name":"Doc11"},{"name":"Doc12"},{"name":"Doc13"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc17"},{"name":"Doc19"}]},"topic7":{"words":"surface, fig, induce, defect, lattice, cause, hence, atom, thermal, function, density, presence, generation, follow, compare, cell, decrease, transfer, morphology, shape, electronic, dependent, furthermore, adatom, atmosphere, independent, least, co, total, consider, must, molecule, structural, understand, bond, critical, remain, hydroxyl, characteristic, mean, stable, signal, strong, interaction, conclusion, disorder, short, perfect, contamination, accord, decomposition, weak, especially, interfacial, suppress, approximately, side, move, detect, eﬀect, face, separate, mostly, respect, tend, origin, configuration, together, chain, relationship, hexagonal, incomplete, pin, monomer, power, limited, way, stability, vacancy, hand, dioxide, charge, away, elemental, accumulation, carbonyl, term, depth, open, dissociate, desorption, physics_report, turn, hold, distance, hybridization, combine, imply, dispersion, trap","name":"Topic 7", "docs":[{"name":"Doc2"},{"name":"Doc10"},{"name":"Doc11"},{"name":"Doc12"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc17"},{"name":"Doc18"}]},"topic8":{"words":"domain, orientation, single, stress, involve, observation, control, prevent, strain, determine, survival, experiment, table, mutant, perform, barrier, absence, pattern, many, signiﬁcantly, work, associate, direct, limit, adaptive, angle, explain, sheet, section, generate, periodicity, resolution, partial, highlight, production, purely, etch, regulon, plot, always, keep, tube, randomly, permission, facet, procedure, panel, random, neighbor, conclude, differ, recent, dissociation, micrometer, probably, compound, source_reprinted, heated, offer, multiple, angular, ﬁnal, stm, degradation, impede, hexamer, interesting, simultaneous, pronounce, inversion, specific, illustration, unit, construct, sized, migrate, narrow, primer, evident, alternatively, morphological, aperture, merge, consistently, separation, cation, penetrate, radiation, next, expensive, rod, simulate, quantity, prevail, prefer, ridge, implement, fracture, precise, encode","name":"Topic 8", "docs":[{"name":"Doc17"},{"name":"Doc18"}]},"topic9":{"words":"copper, response, oxidation, protein, high, repression, gene, sae, condition, oxidative_stress, agr, temperature, low, aureus, virulence, effect, regulator, fold, repress, expression, due, corrosion, induction, regulators_agr, resistance, bioﬁlm, intracellular, catalyze, implication, activity, require, toxicity, gas, extracellular, catheter, eap, bind, order, coat, reduce, contain, datum, produce, transporter, relative, likely, rotation, microarray, model, iron, several, various, particularly, extract, degree, atomic, behavior, month, sensitivity, medium, could, coating, cover, experimental, protect, homeostasis, slow, hydrogen, introduction, annealing, enzyme, methane, contribute, apply, conduct, investigation, radical, second, toxic, simulation, biosynthetic, scale, bacteria, gradually, relatively, transcriptional_proﬁle, volume, can, impact, day, parameter, yield, eliminate, alloy, ability, protection, appear, inferior, deﬁne, first","name":"Topic 9", "docs":[{"name":"Doc1"},{"name":"Doc2"},{"name":"Doc12"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc19"},{"name":"Doc20"}]},"topic10":{"words":"growth, graphene, use, important, excess, grain, however, process, study, increase, mechanism, formation, metal, large, affect, number, material, crystal, role, rate, crpmi, bn, add, present, previous, difference, synthesis, film, method, investigate, free, small, report, provide, culture, detail, size, property, inﬂuence, regulate, author, positive, create, mediate, develop, essential, base, technique, particular, deposition, depend, feedstock, may, electron, product, approach, fact, incubation, pure, calculation, electrical, need, crystalline, seem, reduction, detailed, article, exhibit, comparison, start, complex, correlate, kinetic, act, chem, necessary, closely, compete, instead, restrict, example, maintain, polycrystal, discuss, unlikely, distribute, largely, elevated, drive, far, do, modiﬁcation, numerous, recently, epitaxial, fundamental, trace, bacteria, chemically, adapt","name":"Topic 10", "docs":[{"name":"Doc1"},{"name":"Doc2"},{"name":"Doc3"},{"name":"Doc4"},{"name":"Doc7"},{"name":"Doc9"},{"name":"Doc10"},{"name":"Doc11"},{"name":"Doc12"},{"name":"Doc13"},{"name":"Doc14"},{"name":"Doc15"},{"name":"Doc16"},{"name":"Doc17"},{"name":"Doc18"},{"name":"Doc19"},{"name":"Doc20"}]}}, "docs":{"Doc1":{"name":"03-copper CZ process","link":"./doc_html/03-copper CZ process_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 9"},{"name":"Topic 1"},{"name":"Topic 10"}]},"Doc2":{"name":"02-Complete Corrosion Inhibition through Graphene Defect","link":"./doc_html/02-Complete Corrosion Inhibition through Graphene Defect_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 6"},{"name":"Topic 7"},{"name":"Topic 3"},{"name":"Topic 9"},{"name":"Topic 10"}]},"Doc3":{"name":"19-Observing Graphene Grow Catalyst Graphene Interactions during","link":"./doc_html/19-Observing Graphene Grow Catalyst Graphene Interactions during_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 2"},{"name":"Topic 6"},{"name":"Topic 10"},{"name":"Topic 3"}]},"Doc4":{"name":"09-Thermal Growth of Graphene- A Review","link":"./doc_html/09-Thermal Growth of Graphene- A Review_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 2"},{"name":"Topic 6"},{"name":"Topic 10"}]},"Doc7":{"name":"04-Cu nanowires-nanoletters","link":"./doc_html/04-Cu nanowires-nanoletters_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 6"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc9":{"name":"07-CVD growth (Nature Materials)","link":"./doc_html/07-CVD growth (Nature Materials)_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 4"},{"name":"Topic 2"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc10":{"name":"08-Oxdn bhvr Gr-cu dfcts Nat.Comm","link":"./doc_html/08-Oxdn bhvr Gr-cu dfcts Nat.Comm_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 10"},{"name":"Topic 7"},{"name":"Topic 3"}]},"Doc11":{"name":"10-Substrate grain size and orientation of Cu and Cu–Ni foils used for the","link":"./doc_html/10-Substrate grain size and orientation of Cu and Cu–Ni foils used for the_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 6"},{"name":"Topic 5"},{"name":"Topic 2"},{"name":"Topic 3"},{"name":"Topic 7"},{"name":"Topic 10"}]},"Doc12":{"name":"12-Epitaxial Graphene on Cu(111)","link":"./doc_html/12-Epitaxial Graphene on Cu(111)_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 9"},{"name":"Topic 7"},{"name":"Topic 2"},{"name":"Topic 6"},{"name":"Topic 5"},{"name":"Topic 10"}]},"Doc13":{"name":"17-Interface Formation in Monolayer Graphene-Boron Nitride","link":"./doc_html/17-Interface Formation in Monolayer Graphene-Boron Nitride_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 4"},{"name":"Topic 2"},{"name":"Topic 5"},{"name":"Topic 6"},{"name":"Topic 10"},{"name":"Topic 3"}]},"Doc14":{"name":"20-oles of Oxygen and Hydrogen in Crystal Orientation","link":"./doc_html/20-oles of Oxygen and Hydrogen in Crystal Orientation_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 1"},{"name":"Topic 6"},{"name":"Topic 5"},{"name":"Topic 7"},{"name":"Topic 2"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc15":{"name":"18-O2 encpsln-Cu-Gr-acs.chemmater.7b005","link":"./doc_html/18-O2 encpsln-Cu-Gr-acs.chemmater.7b005_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 6"},{"name":"Topic 7"},{"name":"Topic 9"},{"name":"Topic 2"},{"name":"Topic 1"},{"name":"Topic 5"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc16":{"name":"15-Impact of electrolyte intercalation on the corrosion of graphene-coated copper","link":"./doc_html/15-Impact of electrolyte intercalation on the corrosion of graphene-coated copper_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 4"},{"name":"Topic 7"},{"name":"Topic 6"},{"name":"Topic 2"},{"name":"Topic 9"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc17":{"name":"16-Influence of lattice orientation on growth and structure of graphene on Cu(001)","link":"./doc_html/16-Influence of lattice orientation on growth and structure of graphene on Cu(001)_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 5"},{"name":"Topic 1"},{"name":"Topic 2"},{"name":"Topic 8"},{"name":"Topic 7"},{"name":"Topic 6"},{"name":"Topic 10"}]},"Doc18":{"name":"11-Electronic structure of graphene-hexagonal boron","link":"./doc_html/11-Electronic structure of graphene-hexagonal boron_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 8"},{"name":"Topic 5"},{"name":"Topic 7"},{"name":"Topic 4"},{"name":"Topic 1"},{"name":"Topic 3"},{"name":"Topic 10"}]},"Doc19":{"name":"05-Cu Oxdns ncln sites acs.chemmater.6b","link":"./doc_html/05-Cu Oxdns ncln sites acs.chemmater.6b_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 9"},{"name":"Topic 5"},{"name":"Topic 2"},{"name":"Topic 10"},{"name":"Topic 6"}]},"Doc20":{"name":"06-Cu Stress-response-Staph-AEM-2010-Baker","link":"./doc_html/06-Cu Stress-response-Staph-AEM-2010-Baker_LEM_GENSIMPHRASELDA.html","topics":[{"name":"Topic 3"},{"name":"Topic 10"},{"name":"Topic 9"}]}}} ;
+
+            for (x in data.topics){
+                var sel1 = document.querySelector('#sel1');
+                var option = document.createElement("option");
+                option.value = x;
+                var words = data.topics[x].words;
+                option.text = data.topics[x].name + ' { ' + words.split(', ').splice(0,3) + ' }';
+                sel1.add(option)
+            }
+
+            function seeSelectedDoc(){
+                var selectDoc = document.querySelector('#sel2').value;
+                if (selectDoc === '')
+                    alert("Please select one of the document from the doucment section to see it")
+                else {
+                    var doc_url = data.docs[selectDoc].link;
+                    location.assign(doc_url);
+                }
+            }
+            
+            function giveSelectionTopic(selValue, text) {
+                var sel2 = document.querySelector('#sel2');
+                var doc_name = document.getElementById('doc_name');
+                sel2.innerHTML = '';
+                doc_name.innerHTML = '';
+                var topic_header = document.getElementById('topic');
+                var topic_words = document.getElementById('topicwords');
+                if (text != undefined){
+                    topic_header.innerHTML = text;
+                    topic_words.innerHTML = data.topics[selValue].words;
+                }
+                var docs = data.topics[selValue].docs;
+                for (x in docs){
+                    var option = document.createElement("option");
+                    option.value = docs[x].name;
+                    option.text = docs[x].name + ' - ' +  data.docs[docs[x].name].name;
+                    sel2.add(option)
+                }
+            }
+
+            function giveSelectionDoc(selValue) {
+                var sel3 = document.querySelector('#sel3');
+                sel3.innerHTML = '';
+                var doc_name = document.getElementById('doc_name');
+                if(selValue != undefined){
+                    doc_name.innerHTML = "Document Name: " + data.docs[selValue].name;
+                }
+                var topics = data.docs[selValue].topics;
+                for (x in topics){
+                    var option = document.createElement("option");
+                    option.value = topics[x].name;
+                    var words = data.topics[topics[x].name.toLowerCase().replace(' ','')].words;
+                    option.text = data.topics[topics[x].name.toLowerCase().replace(' ','')].name + ' { ' + words.split(', ').splice(0,3) + ' }';
+                    option.disabled = "disabled";
+                    sel3.add(option)
+                }
+            }
+        </script>
+    </body>
+</html>
+

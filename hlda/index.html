@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+	<h1><p id="topic">Topic</p></h1>
+	<p id="topic_words"></p>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	
+<script>
+
+var treeData = [{ "name":"Topic 1","parent":"null","words":"graphene, growth, surface, cu, high, temperature, layer, electron, observed, shown, figure, low, carbon, atomic, conditions, single, cvd, results, process, large, higher, nm, energy, sample, time, size, formation, rate, substrate, defects, layers, lattice, density, similar, deposition, study, metal, quality, image, grown, shows, scale, pressure, point, result, experiments, performed, microscopy, area, system, measured, edge, resolution, show, hexagonal, addition, edges, found, atoms, properties, due, chemical, spectroscopy, nucleation, pattern, room, samples, experimental, region, form, gas, thickness, images, free, information, methane, presence, order, regions, phase, domain, afm, intensity, lower, coverage, based, scanning, ch, thermal, temperatures, expected, change, structure, substrates, work, metals, technique, formed, present, smaller","children":[{ "name":"Topic 2","parent":"Topic 1","words":"cu, fig, orientation, substrate, copper, surface, single, foil, crystal, foils, ni, corrosion, cm, grain, grains, sample, mm, min, scheme, domain, grown, orientations, annealing, ebsd, polycrystalline, domains, films, case, component, lms, layer, xps, cuo, method, map, ev, oxygen, spectra, ar, substrates, oxide, size, coated, applications, film, electrical, cufoil, alloy, rate, al, relative, aligned, device, density, coating, peaks, direction, defect, annealed, ii, anneal, ratio, evolution, growing, graphene, aes, supplementary, zz, crystallographic, oxides, transition, peak, temperatures, pure, materials, structure, oriented, line, area, introduction, flow, atmospheric, leed, science, heating, type, analysis, range, samples, overlayer, buffer, spectrum, controlled, rst, seeds, front, uence, fcc, conducted, continuous","children":[{ "name":"Topic 3","parent":"Topic 2","words":"cu, oxidation, graphene, copper, oxygen, gr, nucleation, air, grains, fig, samples, ev, annealing, di, figure, foil, defects, min, raman, lms, barrier, islands, features, line, sem, images, optical, grain, process, image, grown, erent, thermal, atoms, gbs, supplementary, energy, con, polycrystalline, annealed, sites, presence, al, oxide, oxidized, spectra, ray, foils, peaks, carboxyl, sw, calculations, groups, scale, content, long, center, sccm, structural, atom, shows, months, underlying, site, selective, atmosphere, xps, red, note, mechanism, hr, mgo, si, synthesized, depending, spectroscopy, dot, barriers, dissociation, crystallographic, molecules, degree, sio, processes, case, ambient, ow, present, inversion, group, shaped, white, uence, typical, mv, reactions, cvd, formed, representative, formation","children":[{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 3","words":"","children":[]},{ "name":"20-oles of Oxygen and Hydrogen in Crystal Orientation","parent":"Topic 3","words":"","children":[]},{ "name":"15-Impact of electrolyte intercalation on the corrosion of graphene-coated copper","parent":"Topic 3","words":"","children":[]},{ "name":"10-Substrate grain size and orientation of Cu and Cu–Ni foils used for the","parent":"Topic 3","words":"","children":[]},{ "name":"01-2D materials - ACS Nano","parent":"Topic 3","words":"","children":[]},{ "name":"08-Oxdn bhvr Gr-cu dfcts Nat.Comm","parent":"Topic 3","words":"","children":[]},{ "name":"07-CVD growth (Nature Materials)","parent":"Topic 3","words":"","children":[]},{ "name":"13-Graphene, hexagonal boron nitride, and their","parent":"Topic 3","words":"","children":[]}]},{ "name":"Topic 4","parent":"Topic 2","words":"nws, cu, dislocation, growth, nw, figure, reaction, tem, driven, supersaturation, contrast, screw, dislocations, image, twist, nts, solution, crystal, hrtem, concentration, direction, saed, redox, diffraction, vectors, burgers, eda, vector, information, formation, conditions, lattice, axis, field, ph, nm, naoh, images, supporting, analysis, pattern, seed, observed, indexed, moire, showing, min, electrochemical, cfr, fft, complexing, bright, contour, aqueous, zone, strong, axial, hollow, beam, longer, mechanism, synthesized, precursor, etching, additional, shows, understanding, contours, static, eshelby, spots, color, superlattice, space, letters, applications, reactions, inset, patterns, sem, low, mm, crystalline, metal, reduction, free, invisibility, ligand, confirm, reagent, zno, promote, readily, ml, ions, solutions, magnitude, condition, reducing, products","children":[{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 4","words":"","children":[]}]},{ "name":"Topic 5","parent":"Topic 2","words":"graphene, growth, cu, direction, lattice, fast, orientation, moir, domains, domain, zigzag, edge, attachment, diffraction, ridges, leed, rotation, rotated, directions, spots, relative, structure, oriented, closer, islands, figure, ridged, adatom, red, lobes, lattices, blue, armchair, angle, island, crystallography, parallel, orientations, consistent, symmetry, patterns, behavior, model, alignment, aligned, mediated, incorporation, carbon, plane, misaligned, ridge, kink, kinks, lens, rotations, purely, spacing, leem, edges, limited, close, pattern, perpendicular, section, larger, crystal, perfectly, periodicity, anisotropic, arrows, arrow, relationship, roughly, details, part, growing, substrate, large, polycrystalline, fov, geometric, symmetric, significance, lobe, lobed, accelerated, likelihood, superposition, examining, shapes, configuration, axis, equal, collected, foils, majority, reference, individual, area, simple","children":[{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 5","words":"","children":[]}]},{ "name":"Topic 6","parent":"Topic 2","words":"copper, aureus, stress, protein, excess, sh, genes, response, oxidative, growth, bio, lm, expression, important, formation, sodm, agr, rna, ahpc, crpmi, microarray, proteins, sae, signi, ribosomal, gene, virulence, toxicity, induced, resistance, grown, regulators, min, analysis, levels, shown, results, mechanisms, soda, kata, transcriptional, strains, studies, number, fig, type, increased, required, conditions, table, copa, repression, bacteria, iron, added, addition, high, mutant, sod, dm, misfolded, dna, ling, global, cell, binding, pro, induction, effect, induces, control, con, total, catalase, plates, data, wild, cultures, superoxide, eap, transporters, homeostasis, represses, responses, regulated, suggest, ed, previous, extracellular, northern, overnight, cuso, regulator, absence, ml, role, determine, identi, environmental, nm","children":[{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 6","words":"","children":[]}]}]},{ "name":"Topic 7","parent":"Topic 1","words":"materials, single, layer, spin, mos, nanosheets, properties, band, figure, structure, electronic, layers, bulk, der, metal, material, waals, layered, van, valley, applications, monolayer, thickness, plane, crystal, thin, si, transport, thick, dielectric, direct, states, recently, pl, structures, conduction, thermal, nanosheet, gate, gap, di, dimensional, vapor, tis, bi, slg, substrates, interface, recent, conductivity, values, solids, exfoliation, basal, solution, control, multilayer, quantum, due, se, assemblies, suspended, transistors, potential, epitaxy, optical, techniques, interactions, topological, silicene, eld, tem, sheets, demonstrated, capacitance, interesting, te, lmdcs, create, include, transistor, cations, unique, raman, organic, solid, power, symmetry, inset, spectra, shows, experimental, tronics, supported, semiconductor, local, field, bands, calculations, ev","children":[{ "name":"Topic 8","parent":"Topic 7","words":"bn, graphene, band, fig, al, structure, di, gap, atoms, erent, properties, heterostructures, method, interlayer, con, energy, substrate, devices, optical, thermal, layer, materials, boron, heterostructure, rsc, carbon, device, guration, conductivity, dirac, eld, atom, ect, level, high, nitride, characteristics, distance, stacking, absorption, magnetic, electronic, dimensional, research, physics, preparation, valence, peak, chemical, fermi, charge, lattice, mechanical, electrons, hbn, adv, mobility, image, crystals, phonon, temperature, strong, prepared, van, sio, applications, transfer, methods, structures, bond, ev, layers, excellent, schematic, cm, physical, cell, rst, current, found, single, iv, dispersion, waals, der, double, graphite, electric, gaas, stable, composite, nanotubes, ective, density, light, point, calculated, wide, shown, peaks","children":[{ "name":"01-2D materials - ACS Nano","parent":"Topic 8","words":"","children":[]},{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 8","words":"","children":[]},{ "name":"13-Graphene, hexagonal boron nitride, and their","parent":"Topic 8","words":"","children":[]}]},{ "name":"Topic 9","parent":"Topic 7","words":"cu, mlg, situ, air, cvd, exposure, carbon, figure, oxygen, xps, ev, catalyst, step, intercalation, cooling, esem, coupled, ambient, di, polycrystalline, note, state, hydrocarbon, data, vacuum, bulk, decoupled, component, mbar, loaded, precipitation, catalysts, raman, time, ni, xrd, temperature, annealing, decoupling, minor, peak, signal, spectra, standard, residual, observe, observed, grown, heating, spectrum, majority, letters, isothermal, ngerprint, metallic, level, small, reported, lmm, xp, interaction, solubility, growing, signatures, core, supporting, con, ect, vapor, experiments, atmosphere, ray, oxidation, compared, adventitious, position, evolution, nano, previously, rst, based, interactions, consistent, previous, cold, storage, auger, scans, shift, pretreatment, bes, exposures, erent, graphene, coupling, peaks, measured, reports, bubble, acquired","children":[{ "name":"01-2D materials - ACS Nano","parent":"Topic 9","words":"","children":[]}]},{ "name":"Topic 10","parent":"Topic 7","words":"bn, ru, nitride, boron, mlg, figure, domains, heterostructures, monolayer, interfaces, moire, stm, interface, exposure, di, adatoms, interfacial, structure, borazine, metal, uhv, ethylene, atomically, incorporation, boundary, sharp, leem, erent, aes, top, edges, supporting, microscopy, consistent, atomic, composition, intermixing, embedded, substitutional, sequential, heterostructure, real, processes, torr, controlled, nanoscale, protrusions, hcp, adatom, monomers, panel, supported, characteristic, hbn, prepared, eld, concentration, structures, epitaxial, raction, aligned, figures, fcc, letters, growing, information, close, image, pro, materials, dose, cryogenic, surrounded, abrupt, phases, zone, honeycomb, supply, half, circle, auger, removal, line, nano, achieve, situ, oxygen, imaging, areas, shows, temperatures, pure, zones, depleted, ciently, microdi, substitution, identical, supplementary, preferential","children":[{ "name":"01-2D materials - ACS Nano","parent":"Topic 10","words":"","children":[]}]}]},{ "name":"Topic 11","parent":"Topic 1","words":"graphene, carbon, temperature, figure, ni, method, high, growth, chemical, scc, cu, deposition, vapor, resistivity, experimental, wire, mechanism, quality, copper, atoms, al, substrate, layers, plasma, surface, ofc, ar, low, cm, gas, crystal, synthesized, shown, materials, number, technology, reproduced, deposited, reported, arc, ch, cvd, synthesize, achieved, epitaxial, annealing, thermal, obtained, source, studied, buffer, copyright, permission, combustion, min, coatings, time, graphite, parameters, due, gbs, kinds, reduction, process, discussed, optical, researchers, pressure, methods, current, polycrystalline, standard, showed, sic, progress, produced, large, gases, table, films, material, found, electrical, nanotubes, spectrum, cost, introduced, grown, grain, society, carbide, synthesis, edm, shows, conventional, product, oxygen, raman, peak, decrease","children":[{ "name":"Topic 12","parent":"Topic 11","words":"surface, atoms, fig, growth, energy, carbon, sic, clusters, al, islands, nucleation, species, structure, step, found, physics, layer, ir, source, tetlow, permission, atom, reports, steps, dft, ru, calculated, calculations, simulations, structures, processes, si, edge, cluster, metal, potential, formation, case, temperatures, reprinted, surfaces, system, rate, interaction, graphene, number, diffusion, section, phase, ev, method, methods, time, ni, stm, barrier, ethene, buffer, shown, rh, island, based, energies, temperature, free, attachment, domains, sites, chemical, barriers, dehydrogenation, moir, concentration, formed, monomers, stable, top, leem, authors, substrate, transition, respect, form, studies, small, initial, corrugation, molecules, state, growing, edges, images, states, electrons, plane, cn, adatom, kmc, tpg, tip","children":[{ "name":"09-Thermal Growth of Graphene- A Review","parent":"Topic 12","words":"","children":[]},{ "name":"14-Growth of epitaxial graphene- Theory and experiment","parent":"Topic 12","words":"","children":[]},{ "name":"01-2D materials - ACS Nano","parent":"Topic 12","words":"","children":[]},{ "name":"13-Graphene, hexagonal boron nitride, and their","parent":"Topic 12","words":"","children":[]}]}]}]}];
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 960 - margin.right - margin.left,
+	height = 500 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	document.getElementById("topic").innerHTML = d.name;
+	document.getElementById("topic_words").innerHTML = d.words;
+	d._children = d.children;
+	d.children = null;
+  } else {
+	if (d.children == undefined && d._children == undefined){
+		var url = "./doc_html/" + d.name + "_LEM_GENSIMPHRASELDA.html"
+		window.location.href = url;
+	} else{
+		document.getElementById("topic").innerHTML = d.name;
+		document.getElementById("topic_words").innerHTML = d.words;
+	}
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
